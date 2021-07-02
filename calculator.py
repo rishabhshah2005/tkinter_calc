@@ -1,19 +1,16 @@
 from tkinter import *
 from funcs import clear_frame
-import numba
-from numba import jit
 
 
-@jit(nopython=True)
 def clear_all(inp_b):
     inp_b.delete(0, END)
 
-@jit(nopython=True)
+
 def backspace(inp_b):
     st = inp_b.get()
     inp_b.delete(len(st) - 1)
 
-@jit(nopython=True)
+
 def calculate(inp_b):
     num = inp_b.get()
     num = num.replace('×', '*')
@@ -30,7 +27,7 @@ def calculate(inp_b):
         clear_all(inp_b)
         inp_b.insert(0, string='ERROR')
 
-@jit(nopython=True)
+
 def calculator(root, win):
     clear_frame(root)
     win.geometry('565x338')
