@@ -1,14 +1,17 @@
 from tkinter import *
 import math
+import numba
+from numba import jit
+
 
 PIE = 22 / 7
 
-
+@jit(nopython=True)
 def clear_frame(frame):
     for widgets in frame.winfo_children():
         widgets.destroy()
 
-
+@jit(nopython=True)
 def decim(imp):
     imp = str(imp)
     le = len(imp)
@@ -21,14 +24,14 @@ def decim(imp):
         imp = imp.replace('.0', '')
     return imp
 
-
+@jit(nopython=True)
 def get_hype(r, h):
     hype = math.hypot(h, r)
     return hype
 
 
 # Formulas For cube
-
+@jit(nopython=True)
 def cube(root, win):
     clear_frame(root)
     win.geometry('300x300')
@@ -38,7 +41,7 @@ def cube(root, win):
     a.set('')
     lbl = Label(root, text='Length of side = ').grid(row=0, column=0, pady=20, padx=20, sticky="nsew")
     inp = Entry(root, width=25, textvariable=a, borderwidth=5).grid(row=0, column=1, pady=20, sticky="nsew")
-
+    @jit(nopython=True)
     def clc():
         clear_frame(frame)
         try:
@@ -65,7 +68,7 @@ def cube(root, win):
 
 
 # Formulas for cuboid
-
+@jit(nopython=True)
 def cuboid(root, win):
     clear_frame(root)
     win.geometry("300x300")
@@ -88,7 +91,7 @@ def cuboid(root, win):
     fram.grid(row=4, column=0, columnspan=2)
 
     # Calculating
-
+    @jit(nopython=True)
     def calc():
         try:
             clear_frame(fram)
@@ -124,7 +127,7 @@ def cuboid(root, win):
 
 # CYLINDER
 
-
+@jit(nopython=True)
 def cylinder(root, win):
     clear_frame(root)
     win.geometry("300x300")
@@ -142,6 +145,7 @@ def cylinder(root, win):
     hgt = Entry(root, width=25, textvariable=ht, borderwidth=5).grid(row=1, column=1)
 
     # Calc func
+    @jit(nopython=True)
     def calc():
         try:
             r = float(rd.get())
@@ -168,7 +172,7 @@ def cylinder(root, win):
 
 # CONE
 
-
+@jit(nopython=True)
 def cone(root, win):
     clear_frame(root)
     win.geometry('300x300')
@@ -185,6 +189,7 @@ def cone(root, win):
     hgt_l = Label(root, text="Height = ").grid(row=1, column=0, padx=15, pady=10)
 
     # Calculating
+    @jit(nopython=True)
     def calc():
         clear_frame(frm)
         try:
@@ -211,7 +216,7 @@ def cone(root, win):
 
 
 # Sphere
-
+@jit(nopython=True)
 def sphere(root, win):
     clear_frame(root)
     win.geometry('300x300')
@@ -223,6 +228,7 @@ def sphere(root, win):
     rad = Entry(root, width=25, borderwidth=5, textvariable=r).grid(row=0, column=1, pady=10)
 
     # Calculating
+    @jit(nopython=True)
     def calc():
         clear_frame(frm)
         try:
@@ -246,7 +252,7 @@ def sphere(root, win):
 
 # Hemisphere
 
-
+@jit(nopython=True)
 def hemisphere(root, win):
     clear_frame(root)
     win.geometry('300x300')
@@ -258,6 +264,7 @@ def hemisphere(root, win):
     rad = Entry(root, width=25, borderwidth=5, textvariable=r).grid(row=0, column=1, pady=10)
 
     # Calculating
+    @jit(nopython=True)
     def calc():
         clear_frame(frm)
         try:
@@ -285,7 +292,7 @@ def hemisphere(root, win):
 
 # Circle
 
-
+@jit(nopython=True)
 def circle(root, win):
     clear_frame(root)
     win.geometry('300x300')
@@ -297,6 +304,7 @@ def circle(root, win):
     rad = Entry(root, width=25, borderwidth=5, textvariable=r).grid(row=0, column=1, pady=10)
 
     # Calculating
+    @jit(nopython=True)
     def calc():
         clear_frame(frm)
         try:
@@ -314,14 +322,14 @@ def circle(root, win):
     btn = Button(root, text="Calculate", padx=15, pady=15, command=calc).grid(row=1, column=0, columnspan=2, padx=15,
                                                                               pady=20)
 
-
+@jit(nopython=True)
 def about_me(root, win):
     clear_frame(root)
     win.geometry('500x300')
     label1 = Label(root, text='Made by', font=('helvetica', 40, 'bold')).pack()
     label2 = Label(root, text='Rishabh Shah', font=('helvetica', 40, 'bold')).pack()
 
-
+@jit(nopython=True)
 def hlp(root, win):
     clear_frame(root)
     win.geometry('700x200')
